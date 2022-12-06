@@ -12,8 +12,8 @@ const y2 = 10;
 let currX = 0; 
 let currY = 0;
 
-const check = (moves,batteryPercent,batteryConsumed) => {
-    if (moves > 4 || batteryPercent !== batteryHealth) {
+const check = (batteryPercent,batteryConsumed) => {
+    if (batteryPercent !== batteryHealth) {
         const obj = 
             {
                 statusCode: 400,
@@ -45,7 +45,7 @@ module.exports.forward = (req,res) => {
     
     const batteryPercent = req.body.battery;
     const batteryConsumed = moves * 2 ;
-    const data = check(moves,batteryPercent,batteryConsumed);
+    const data = check(batteryPercent,batteryConsumed);
 
     if (data) {
         res.send(data);
@@ -80,7 +80,7 @@ module.exports.backward = (req,res) => {
     const moves = req.body.moves;
     const batteryPercent = req.body.battery;
     const batteryConsumed = moves * 2 ;
-    const data = check(moves,batteryPercent,batteryConsumed);
+    const data = check(batteryPercent,batteryConsumed);
 
     if (data) {
         res.send(data);
@@ -115,7 +115,7 @@ module.exports.right = (req,res) => {
     const moves = req.body.moves;
     const batteryPercent = req.body.battery;
     const batteryConsumed = moves * 2 ;
-    const data = check(moves,batteryPercent,batteryConsumed);
+    const data = check(batteryPercent,batteryConsumed);
 
     if (data) {
         res.send(data);
@@ -150,7 +150,7 @@ module.exports.left = (req,res) => {
     const moves = req.body.moves;
     const batteryPercent = req.body.battery;
     const batteryConsumed = moves * 2 ;
-    const data = check(moves,batteryPercent,batteryConsumed);
+    const data = check(batteryPercent,batteryConsumed);
 
     if (data) {
         res.send(data);
